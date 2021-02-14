@@ -158,7 +158,10 @@ if any(os.path.isfile(x) for x in config_locations):
         ETEBASE_REDIS_URI = section.get("redis_uri")
 
     if "allowed_hosts" in config:
+        print("allowed_hosts discovered")
         ALLOWED_HOSTS = [y for x, y in config.items("allowed_hosts")]
+    else:
+        print("allowed_hosts not there")
 
     if "database" in config:
         DATABASES = {"default": {x.upper(): y for x, y in config.items("database")}}
